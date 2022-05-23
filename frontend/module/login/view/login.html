@@ -1,0 +1,122 @@
+<div class="container">
+    <br><br><br>
+    <!-- LOGIN -->
+    <form ng-show="show_login" id='login__form' name='login__form' method='post'>
+        <h2>Login Form</h2>
+        <div class="form__content">
+            <div class="form__input">
+                <label for="username"><b>Username</b></label>
+                <input ng-model = "username" ng-pattern = "regex_username" type="text" placeholder="Enter Username" id="login_username" name="username" ng-minlength="3" ng-maxlength="15" required>
+                <font color="red">
+                    <span class="text-danger" ng-show="login__form.username.$error.required && (login__form.username.$dirty || login__form.username.$touched)">Introduzca un nombre</span>
+                    <span class="text-danger" ng-show="login__form.username.$error.minlength">Introduzca mas de 3 caracteres</span>
+                    <span class="text-danger" ng-show="login__form.username.$error.maxlength">Introduzca menos de 15 caracteres</span>
+                </font>
+            </div>
+            <div class="form__input">
+                <label for="password"><b>Password</b></label>
+                <input ng-model = "password" ng-pattern = "regex_password" type="password" placeholder="Enter password" id="login_password" name="password" required>
+                <font color="red">
+                    <span class="text-danger" ng-show="login__form.password.$error.required && (login__form.password.$dirty || login__form.password.$touched)">Introduzca una contraseña</span>
+                    <span class="text-danger" ng-show="login__form.password.$error.minlength">Introduzca mas de 3 caracteres</span>
+                    <span class="text-danger" ng-show="login__form.password.$error.maxlength">Introduzca menos de 15 caracteres</span>
+                </font>
+            </div>
+        </div>
+        <spam class="psw">Forgot <a id="recover_password" href="#/recover">password?</a></spam>
+        <div class="button_container">
+            <input class="button" id="login" name="login" ng-click = "login()" ng-disabled = "login__form.username.$invalid || login__form.password.$invalid" type="submit" value = "Enter"/>
+        </div>
+        <div class="button_container">
+            <a class="button" id="register"  href="#/register" type="button">Sign up</a>
+        </div>
+        <div class="button_container">
+            <a class="button" id="google" type="button" ng-click = "login_google()"> Google </a>
+            <a class="button" id="github" type="button" ng-click = "login_github()"> Git Hub </a>
+        </div>
+    </form>
+    <!-- REGISTER -->
+    <form ng-show="show_register" id="register__form" name='register__form' method="post">
+        <h2>Register Form</h2>
+        <div class="form__content">
+            <div class="form__input">
+                <label for="username"><b>Username</b></label>
+                <input ng-model = "register_username" ng-pattern = "regex_username" type="text" placeholder="Enter Username" id="username" name="username" required>
+                <font color="red">
+                    <span class="text-danger" ng-show="register__form.username.$error.required && (register__form.username.$dirty || register__form.username.$touched)">Introduzca un nombre</span>
+                    <span class="text-danger" ng-show="register__form.username.$error.minlength">Introduzca mas de 3 caracteres</span>
+                    <span class="text-danger" ng-show="register__form.username.$error.maxlength">Introduzca menos de 15 caracteres</span>
+                </font>
+            </div>
+            <div class="form__input">
+                <label for="email"><b>Email</b></label>
+                <input ng-model = "register_email" ng-pattern = "regex_email" type="text" placeholder="Enter email" id="email" name="email" required>
+                <font color="red">
+                    <span class="text-danger" ng-show="register__form.email.$error.required && (register__form.email.$dirty || register__form.email.$touched)">Introduzca un email</span>
+                    <span class="text-danger" ng-show="register__form.email.$error.minlength">Introduzca mas de 3 caracteres</span>
+                    <span class="text-danger" ng-show="register__form.email.$error.maxlength">Introduzca menos de 15 caracteres</span>
+                </font>
+            </div>
+            <div class="form__input">
+                <label for="r_password"><b>Password</b></label>
+                <input ng-model = "register_password" ng-pattern = "regex_password" type="password" placeholder="Enter password" id="r_password" name="password" required>
+                <font color="red">
+                    <span class="text-danger" ng-show="register__form.password.$error.required && (register__form.password.$dirty || register__form.password.$touched)">Introduzca una contraseña</span>
+                    <span class="text-danger" ng-show="register__form.password.$error.minlength">Introduzca mas de 3 caracteres</span>
+                    <span class="text-danger" ng-show="register__form.password.$error.maxlength">Introduzca menos de 15 caracteres</span>
+                </font>
+            </div>
+            <div class="button_container">
+                <input class="button" id="register" ng-click="register()"  ng-disabled = "register__form.username.$invalid || register__form.email.$invalid || register__form.password.$invalid" type="button" value = "Enter"/>
+            </div>       
+        </div>
+    </form>
+    <!-- RECOVER PASSWORD -->
+   <form ng-show="show_recover_password" id="email__form" name='email__form' method="post">
+        <h2>Recover password</h2>
+        <div class="form__content">
+            <div class="form__input">
+                <label for="email"><b>Email</b></label>
+                <input ng-model = "email" ng-pattern = "regex_email" type="text" placeholder="Enter email" id="recover_email" name="email" required>
+                <font color="red">
+                    <span class="text-danger" ng-show="email__form.email.$error.required && (email__form.email.$dirty || email__form.email.$touched)">Introduzca un email</span>
+                    <span class="text-danger" ng-show="email__form.email.$error.minlength">Introduzca mas de 3 caracteres</span>
+                    <span class="text-danger" ng-show="email__form.email.$error.maxlength">Introduzca menos de 15 caracteres</span>
+                </font>
+            </div>
+            <div class="button_container">
+                <input class="button" id="button_email" ng-click="recover_password()" ng-disabled = "email__form.email.$invalid" type="button" value = "Enter"/>
+            </div>       
+        </div>
+    </form>
+    <!-- NEW PASSWORD -->
+    <form ng-show="show_new_password" id="password__form" name='password__form' method="post">
+        <h2>New password</h2>
+        <div class="form__content">
+            <div class="form__input">
+                <label for="password"><b>Password</b></label>
+                <input ng-model = "password" ng-pattern = "regex_password" type="password" placeholder="Enter password" id="new_password" name="password" required>
+                <font color="red">
+                    <span class="text-danger" ng-show="password__form.password.$error.required && (password__form.password.$dirty || password__form.password.$touched)">Introduzca una contraseña</span>
+                    <span class="text-danger" ng-show="password__form.password.$error.minlength">Introduzca mas de 3 caracteres</span>
+                    <span class="text-danger" ng-show="password__form.password.$error.maxlength">Introduzca menos de 15 caracteres</span>
+                </font>
+            </div>
+            <div class="form__input">
+                <label for="password"><b>Password</b></label>
+                <input ng-model = "r_password" ng-pattern = "regex_password" type="password" placeholder="Enter password" id="new_r_password" name="r_password" required>
+                <font color="red">
+                    <span class="text-danger" ng-show="password__form.r_password.$error.required && (password__form.r_password.$dirty || password__form.r_password.$touched)">Introduzca una contraseña</span>
+                    <span class="text-danger" ng-show="password__form.r_password.$error.minlength">Introduzca mas de 3 caracteres</span>
+                    <span class="text-danger" ng-show="password__form.r_password.$error.maxlength">Introduzca menos de 15 caracteres</span>
+                    <span class="text-danger" ng-show="password__form.password != password__form.r_password && (password__form.r_password.$dirty || password__form.r_password.$touched)">Las contraseñas no coinciden</span>
+                </font>
+            </div>
+            <div class="button_container">
+                <input class="button" id="recover" ng-click="new_password()" ng-disabled = "password__form.password.$invalid" type="button" value = "Enter"/>
+            </div>       
+        </div>
+    </form>
+
+</div>
+

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html ng-app="framework_PHP_OO_MVC_AngularJS" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>WEBSITE</title>
+    <!--========== ANGULAR JS ==========-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular-route.min.js"></script>
+
+    <!--========== CONTROLLER AND SERVICES ==========-->
+    <script src="frontend/router.js"></script>
+    <script src="frontend/apiconnector.js"></script>
+    <script type="text/javascript" src="frontend/module/home/controller/controller_home.js"></script>
+    <script type="text/javascript" src="frontend/module/shop/controller/controller_shop.js"></script>
+    <script type="text/javascript" src="frontend/module/shop/services/services_shop.js"></script>
+    <script type="text/javascript" src="frontend/module/contact/controller/controller_contact.js"></script>
+    <script type="text/javascript" src="frontend/module/contact/services/services_contact.js"></script>
+    <script type="text/javascript" src="frontend/module/login/controller/controller_login.js"></script>
+    <script type="text/javascript" src="frontend/module/login/services/services_login.js"></script>
+    <script type="text/javascript" src="frontend/module/login/services/services_localstorage.js"></script>
+    <script type="text/javascript" src="frontend/module/login/services/services_social_login.js"></script>
+    <script type="text/javascript" src="frontend/module/cart/controller/controller_cart.js"></script>
+    <script type="text/javascript" src="frontend/module/cart/services/services_cart.js"></script>
+    <script type="text/javascript" src="frontend/module/search/services/services_search.js"></script>
+
+    <!--========== TRANSLATE ==========-->
+    <!-- <script type="text/javascript" src="frontend/view/lang/translate.js"></script> -->
+
+    <!--========== TOASTR ==========-->
+    <link rel="stylesheet" href="https://npmcdn.com/angular-toastr/dist/angular-toastr.css" />
+    <script src="https://npmcdn.com/angular-toastr/dist/angular-toastr.tpls.js"></script>
+
+    <!--========== GLIDER ==========-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.js"></script>
+
+    <!--========== BOX ICONS ==========-->
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+
+    <!--========== CSS ==========-->
+    <link href="frontend/view/css/styles.css" rel="stylesheet" />
+
+    <!-- BOOTSTRAP SCRIPTS  -->
+    <!-- <script src="frontend/view/plugins/bootstrap.js"></script> -->
+
+    <!-- CUSTOM SCRIPTS  -->
+    <!-- <script src="frontend/view/js/custom.js"></script> -->
+
+    <!-- BOOTSTRAP CORE STYLE CSS -->
+    <link href="frontend/view/css/bootstrap.css" rel="stylesheet" />
+
+    <!-- FONTAWESOME STYLE CSS -->
+    <link href="frontend/view/css/font-awesome.min.css" rel="stylesheet" />
+
+    <!-- CUSTOM STYLE CSS -->
+    <link href="frontend/view/css/styles.css" rel="stylesheet" />
+
+    <!-- GOOGLE FONT -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css' rel='stylesheet' />
+
+    <!--========== FIREBASE ==========-->
+    <script src="https://www.gstatic.com/firebasejs/3.5.2/firebase.js"></script>
+</head>
+
+<body>
+    <div ng-include='"frontend/view/includes/menu.view.html"'></div>
+    <div ng-view autoscroll="true"></div>
+    <div ng-include='"frontend/view/includes/footer.view.html"'></div>
+</body>
+
+</html>

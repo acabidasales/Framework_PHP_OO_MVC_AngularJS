@@ -1,0 +1,38 @@
+<main class="l-main">
+    <!--========== CAROUSEL ==========-->
+    <div class="carousel">
+        <div class="carousel__container">
+            <button class="carousel__prev">
+                    <i class='bx bx-chevron-left'></i>
+                </button>
+            <div class="carousel__list">
+                <div class="carousel__elements" ng-repeat="slide in slides">
+                    <img class='carousel__img' id='' src='{{slide.list}}' ng-click="redirect_shop('categoria', slide.categoria)" alt=''>
+                </div>
+            </div>
+            <button class="carousel__next">
+                    <i class='bx bx-chevron-right'></i>
+                </button>
+        </div>
+        <div class="carousel__indicator"></div>
+    </div>
+    <!--========== CATEGORIA ==========-->
+    <section class="marca section bd-container" id="marca">
+        <div class="cat">
+            <div class="services__content" ng-repeat="marca in marcas">
+                <img src='{{marca.imagen_marca}}' ng-click="redirect_shop('marca', marca.nombre_marca)" alt='' class='services__img' id='{{marca.nombre_marca}}'>
+                <h3 class='services__title'>{{marca.nombre_marca}}</h3>
+            </div>
+        </div>
+    </section>
+    <!--========== BRANDS ==========-->
+    <section class="brands section bd-container" id="brands">
+        <h3 class='brand__title'>Marcas que son tendencia</h3>
+        <div class="results">
+            <div id="brands" class="brand__content" ng-repeat="brand in brands">
+                <img src='http://localhost/framework_PHP_OO_MVC_AngularJS/frontend/{{brand.img}}' ng-click="redirect_shop('marca', brand.brand)" alt='' class='brand__img' id='{{brand.brand}}'>
+            </div>
+        </div>
+        <div id="container-footer" class="brand__button"></div>
+    </section>
+</main>

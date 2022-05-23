@@ -1,0 +1,42 @@
+<br><br><br><br>
+    <div class="basket">
+      <div class="basket-labels">
+        <ul>
+          <li class="item item-heading">Item</li>
+          <li class="price">Price</li>
+          <li class="quantity">Quantity</li>
+          <li class="subtotal">Subtotal</li>
+        </ul>
+      </div>
+      <div class="basket-product" id="{{product.codigo_producto}}" ng-repeat="product in list_products">
+        <div class="item">
+          <div class="product-image">
+            <img src="http://localhost/website/frontend/{{product.images}}" alt="" class="product-frame">
+          </div>
+          <div class="product-details">
+            <h1 class="title__cart">
+              <strong><span class="item-quantity">{{product.qty}}</span>x</strong> {{product.nombre}}
+            </h1>
+            <p class="cart__description"><strong>Size {{product.talla}}</strong></p>
+            <p class="cart__description">Product Code - {{product.codigo_producto}}</p>
+          </div>
+        </div>
+        <div class="price">{{product.precio}}</div>
+        <div class="quantity">
+          <input type="number" name="input" ng-model="list_products.qty" ng-change="change_qty(product.codigo_producto)" value="{{product.qty}}" min="1" max="10" required>
+        </div>
+        <div id="{{product.codigo_producto}}" class="subtotal">{{product.precio*product.qty}}</div>
+        <div class="remove">
+          <button class="button__remove" ng-click="remove_cart(product.codigo_producto)" id="{{product.qty}}">Remove</button>
+        </div>
+      </div>
+      <div class="basket-product">
+        <div class="summary-total">
+          <div class="total-title">Total</div>
+          <div class="total-value final-value" id="basket-total">{{subtotal()}}</div>
+        </div>
+        <div class="summary-checkout">
+            <button class="checkout-cta" ng-click="checkout()">Go to Secure Checkout</button>
+        </div>
+      </div>
+    </div>
