@@ -1,4 +1,4 @@
-var app = angular.module('framework_PHP_OO_MVC_AngularJS', ['ngRoute', 'toastr']);
+var app = angular.module('framework_PHP_OO_MVC_AngularJS', ['ngRoute', 'toastr', 'ui.bootstrap']);
 
 app.config(['$routeProvider', function($routeProvider) {
     $routeProvider
@@ -6,10 +6,10 @@ app.config(['$routeProvider', function($routeProvider) {
             templateUrl: "frontend/module/home/view/home.html",
             controller: "controller_home",
             resolve: {
-                /* tipo: function(services) {
+                tipo: function(services) {
                     return services.get('home', 'tipo_carousel');
-                }, */
-                marcas: function(services) {
+                },
+                marca: function(services) {
                     return services.get('home', 'marcas_carousel');
                 },
                 /* categoria: function(services) {
@@ -67,15 +67,15 @@ app.config(['$routeProvider', function($routeProvider) {
             templateUrl: "frontend/module/home/view/home.html",
             controller: "controller_home",
             resolve: {
-                tipo: function(services) {
+                /* tipo: function(services) {
                     return services.get('home', 'tipo_carousel');
-                },
+                }, */
                 marcas: function(services) {
                     return services.get('home', 'marcas_carousel');
                 },
-                categoria: function(services) {
+                /* categoria: function(services) {
                     return services.get('home', 'categoria_carousel');
-                }
+                } */
             }
         });
 }]);
