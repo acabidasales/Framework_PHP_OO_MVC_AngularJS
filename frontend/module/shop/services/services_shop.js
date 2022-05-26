@@ -20,7 +20,7 @@ app.factory('services_shop', ['services', '$rootScope', function(services, $root
             });
     }
 
-    function pagination(products, favs) {
+    /* function pagination(products, favs) {
         $rootScope.products = products;
         $rootScope.page = 1;
         $rootScope.total_page = Math.ceil(products.length / 6);
@@ -29,9 +29,9 @@ app.factory('services_shop', ['services', '$rootScope', function(services, $root
             $rootScope.pages.push(i);
         }
         change_page($rootScope.page, favs);
-    }
+    } */
 
-    function change_page(page, favs) {
+    /* function change_page(page, favs) {
         $rootScope.show1 = true;
         $rootScope.show2 = true;
 
@@ -44,9 +44,9 @@ app.factory('services_shop', ['services', '$rootScope', function(services, $root
             $rootScope.show1 = false;
         }
         load_favs();
-    }
+    } */
 
-    function load_favs() {
+    /* function load_favs() {
         if (localStorage.token) {
             services.post('shop', 'load_like', { user: localStorage.token })
                 .then(function(response) {
@@ -68,14 +68,14 @@ app.factory('services_shop', ['services', '$rootScope', function(services, $root
                 $rootScope.list_products[row].favs_class = "bx-heart";
             }
         }
-    }
+    } */
 
-    function details(codigo_producto) {
-        services.post('shop', 'details', { codigo_producto: codigo_producto })
+    function details(codigo_coche) {
+        services.post('shop', 'details', { codigo_coche: codigo_coche })
             .then(function(response) {
-                $rootScope.list_products = response;
-                load_favs();
-                load_api();
+                $rootScope.list = response;
+                /* load_favs();
+                load_api(); */
             }, function(error) {
                 console.log(error);
             });
@@ -90,22 +90,22 @@ app.factory('services_shop', ['services', '$rootScope', function(services, $root
             });
     }
 
-    function add_cart(codigo_producto, user) {
+    /* function add_cart(codigo_producto, user) {
         services.post('shop', 'insert_cart', { id: codigo_producto, user: user })
             .then(function(response) {
                 console.log(response);
             }, function(error) {
                 console.log(error);
             });
-    }
+    } */
 
-    function add_favs(codigo_producto, user) {
+    /* function add_favs(codigo_producto, user) {
         services.post('shop', 'click_like', { id: codigo_producto, user: user })
             .then(function(response) {
                 console.log(response);
             }, function(error) {
                 console.log(error);
             });
-    }
+    } */
 
 }]);

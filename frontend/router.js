@@ -23,14 +23,15 @@ app.config(['$routeProvider', function($routeProvider) {
                 filters: function(services) {
                     return services.get('shop', 'filters');
                 },
+                /* list_products: function(services) {
+                    return services.get('shop', 'list_products');
+                } */
                 list: function(services) {
                     return services.get('shop', 'list')
                 },
-
                 marcas: function(services) {
                     return services.get('shop', 'select_marcas')
                 },
-
                 combustible: function(services) {
                     return services.get('shop', 'select_combustible')
                 }

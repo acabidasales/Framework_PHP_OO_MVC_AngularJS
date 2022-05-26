@@ -38,15 +38,14 @@
             <div id="formulario">
                 <div id="filter" style="width: 10%; margin-left: 20px; margin-right: 20px; margin-top: 25px;">
                     <div id="interior_formulario"><span>Marcas:</span><br>
-                        <span>{{marcas}}</span>
                         <select id="select_marcas" class="filter_marcas">
                             <option value="">-</option>
-                            <option ng-repeat="marcas in marcas" id="Alpine_id" value="Alpine"></option>
+                            <option ng-repeat="marcas in marcas" id="{{marcas.nombre_marca}}_id" value="{{marcas.nombre_marca}}">{{marcas.nombre_marca}}</option>
                         </select><br><br>
                         <span>Combustible:</span><br>
                         <select id="select_combustible" class="filter_combustible">
                             <option value="">-</option>
-                            <option id="Diesel_id" value="Diesel">Diesel</option>
+                            <option ng-repeat="combustible in combustibles" id="{{combustible.nombre_tipo}}_id" value="{{combustible.nombre_tipo}}">{{combustible.nombre_tipo}}</option>
                         </select><br><br>
                         <input type="button" class="btn btn-secondary aplicar_filtros_button" id="apply_filters" value="Aplicar Filtros">
                     </div>

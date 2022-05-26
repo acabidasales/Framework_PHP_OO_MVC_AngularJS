@@ -1,42 +1,42 @@
-app.controller('controller_shop', function($scope, $rootScope, $route, filters, list, services_shop, marca, combustible) {
-    /* let marcas = [];
-    let combustible = []; */
+app.controller('controller_shop', function($scope, $rootScope, $route, filters, list, marcas, combustible, services_shop) {
+    /* let nombre_marca = [];
+    let nombre_combustible = []; */
     $scope.lists = list;
-    $scope.marcas = marca;
-    $scope.combustibles = combustible
+    $scope.marcas = marcas;
+    $scope.combustibles = combustible;
 
-    /* $scope.filter_products = function(value, key) {
+    $scope.filter_products = function(value, key) {
         var fliter_type = [];
 
         if (key == "marcas") {
-            if (!marcas.includes(value)) {
-                marcas.push(value);
+            if (!nombre_marca.includes(value)) {
+                nombre_marca.push(value);
             } else {
-                i = marcas.indexOf(value);
-                marcas.splice(i, 1);
+                i = nombre_marca.indexOf(value);
+                nombre_marca.splice(i, 1);
             }
         } else if (key == "combustible") {
-            if (!combustible.includes(value)) {
-                combustible.push(value);
+            if (!nombre_combustible.includes(value)) {
+                nombre_combustible.push(value);
             } else {
-                i = combustible.indexOf(value);
-                combustible.splice(i, 1);
+                i = nombre_combustible.indexOf(value);
+                nombre_combustible.splice(i, 1);
             }
         }
 
-        if (marcas.length != 0) {
-            fliter_type.push({ key: 'marcas', value: marcas });
+        if (nombre_marca.length != 0) {
+            fliter_type.push({ key: 'marcas', value: nombre_marca });
         }
-        if (combustible.length != 0) {
-            fliter_type.push({ key: 'combustible', value: combustible });
+        if (nombre_combustible.length != 0) {
+            fliter_type.push({ key: 'combustible', value: nombre_combustible });
         }
 
         if (fliter_type.length == 0) {
-            $scope.pagination(list);
+            /* $scope.pagination(list); */
         } else {
             services_shop.filter_search(fliter_type);
         }
-    } */
+    }
 
     /* $scope.pagination = function(products) {
         services_shop.pagination(products);
@@ -46,19 +46,19 @@ app.controller('controller_shop', function($scope, $rootScope, $route, filters, 
         services_shop.change_page(page);
     } */
 
-    $scope.load_details = function(codigo_producto) {
-        location.href = "#/product/" + codigo_producto;
+    $scope.load_details = function(codigo_coche) {
+        location.href = "#/coche/" + codigo_coche;
     };
 
-    $scope.add_cart = function(codigo_producto) {
+    /* $scope.add_cart = function(codigo_producto) {
         if (localStorage.token) {
             services_shop.add_cart(codigo_producto, localStorage.token);
         } else {
             location.href = "#/login";
         }
-    }
+    } */
 
-    $scope.add_like = function() {
+    /* $scope.add_like = function() {
         if (localStorage.token) {
             services_shop.add_like(this.product.codigo_producto, localStorage.token);
             if (this.product.like_class == "bxs-heart") {
@@ -69,7 +69,7 @@ app.controller('controller_shop', function($scope, $rootScope, $route, filters, 
         } else {
             location.href = "#/login";
         }
-    }
+    } */
 
     let path = $route.current.originalPath.split('/');
     if (path[1] === 'shop') {
@@ -83,8 +83,8 @@ app.controller('controller_shop', function($scope, $rootScope, $route, filters, 
         } else {
             /* $scope.pagination(list); */
         }
-    } else if (path[1] === 'product') {
-        $scope.show_list_product = false;
+    } else if (path[1] === 'coche') {
+        $scope.show_list_coche = false;
         $scope.show_details = true;
         services_shop.details($route.current.params.token);
     }
