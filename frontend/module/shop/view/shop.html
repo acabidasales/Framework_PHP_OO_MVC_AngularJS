@@ -1,4 +1,79 @@
-<div class="shop__container">
+<style>
+    .bx-heart {
+        content: url("frontend/view/img/heart_red_border.png");
+        color: rgb(66, 66, 66);
+        background-color: white;
+        border-radius: 8px;
+        width: 25px;
+        height: 25px;
+        position: absolute;
+        margin-top: -25px;
+    }
+    
+    .bxs-heart {
+        content: url("frontend/view/img/heart_relleno.png");
+        color: rgb(66, 66, 66);
+        background-color: white;
+        border-radius: 8px;
+        width: 25px;
+        height: 25px;
+        position: absolute;
+        margin-top: -25px;
+    }
+    
+    .no-heart {
+        content: url("frontend/view/img/heart.png");
+        color: rgb(66, 66, 66);
+        background-color: white;
+        border-radius: 8px;
+        width: 25px;
+        height: 25px;
+        position: absolute;
+        margin-top: -25px;
+    }
+</style>
+<div class="shop__container" style="background-color:gray;">
+    <div class="shop__list" ng-show="show_list_product">
+        <div id="todo" style="display: inline-flex;margin-top: 80px;">
+            <div id="formulario">
+                <div id="filter" style="width: 10%; margin-left: 20px; margin-right: 20px; margin-top: 25px;">
+                    <div id="interior_formulario"><span>Marcas:</span><br>
+                        <span>{{marcas}}</span>
+                        <select id="select_marcas" class="filter_marcas">
+                            <option value="">-</option>
+                            <option ng-repeat="marcas in marcas" id="Alpine_id" value="Alpine"></option>
+                        </select><br><br>
+                        <span>Combustible:</span><br>
+                        <select id="select_combustible" class="filter_combustible">
+                            <option value="">-</option>
+                            <option id="Diesel_id" value="Diesel">Diesel</option>
+                        </select><br><br>
+                        <input type="button" class="btn btn-secondary aplicar_filtros_button" id="apply_filters" value="Aplicar Filtros">
+                    </div>
+                </div>
+            </div>
+            <!-- <div ng-repeat="list in lists">
+                <span>{{list}}</span>
+            </div> -->
+            <div id="container" class="container" style="display:flex;flex-direction: column-reverse;flex-wrap: wrap-reverse;">
+                <div id="content" class="content row" style="width:60%;align-items: center;display: flex;flex-wrap: wrap;justify-content: space-between;margin-left:auto;margin-right:40%;">
+                    <div id="interior" class="col-md-6" style="margin-bottom: 30px;" ng-repeat="list in lists">
+                        <div id='{{list.ID}}' class="wrapper">
+                            <div id="imagen" class="img" style="border-style:solid;border-color:#a7a7a7;border-radius: 10px;margin-top:5px;"><br>
+                                <div class="car"><img style="width:306px;height:204.41px;" src='frontend/{{list.imagen}}'></div>
+                                <div style="text-align:center;font-size:32px;font-weight:bold;">{{list.Marca}} {{list.Modelo}}</div>
+                                <div style="text-align:right;font-size:18px;font-weight:bold;color:red;">{{list.precio}}</div>
+                            </div>
+                        </div>
+                        <div class="list__heart" id='{{list.ID}}'><img id='like_{{list.ID}}' class="bx-heart"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <div class="shop__container">
     <div class="shop__list" ng-show="show_list_product">
         <br><br><br><br>
         <div class="filters__container">
@@ -80,4 +155,4 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
