@@ -71,7 +71,7 @@
         }
 
         public function select_one($db, $id) {
-            $sql = "SELECT * FROM coches WHERE ID='$id'";
+            $sql = "SELECT * FROM coches WHERE ID=$id";
             $stmt = $db->ejecutar($sql);
             return $db->listar($stmt);
         }
@@ -83,7 +83,7 @@
         }
 
         public function select_images($db, $id) {
-            $sql = "SELECT * FROM imagenes WHERE id_coche='$id'";
+            $sql = "SELECT * FROM imagenes WHERE id_coche=$id";
             $stmt = $db->ejecutar($sql);
             return $db->listar($stmt);
         }

@@ -1,16 +1,17 @@
 app.factory('services_shop', ['services', '$rootScope', function(services, $rootScope) {
     let service = {
         details: details,
-        load_api: load_api,
-        filter_search: filter_search,
-        pagination: pagination,
-        change_page: change_page,
-        add_cart: add_cart,
-        add_favs: add_favs
+        load_api: load_api
+            /* ,
+                    filter_search: filter_search,
+                    pagination: pagination,
+                    change_page: change_page,
+                    add_cart: add_cart,
+                    add_favs: add_favs */
     };
     return service;
 
-    function filter_search(filters) {
+    /* function filter_search(filters) {
         console.log(filters);
         services.post('shop', 'list_filters_products', { filters: filters })
             .then(function(response) {
@@ -18,7 +19,7 @@ app.factory('services_shop', ['services', '$rootScope', function(services, $root
             }, function(error) {
                 console.log(error);
             });
-    }
+    } */
 
     /* function pagination(products, favs) {
         $rootScope.products = products;
@@ -71,9 +72,10 @@ app.factory('services_shop', ['services', '$rootScope', function(services, $root
     } */
 
     function details(codigo_coche) {
-        services.post('shop', 'details', { codigo_coche: codigo_coche })
+        services.post('shop', 'select_details', { ID: codigo_coche })
             .then(function(response) {
-                $rootScope.list = response;
+                console.log(response);
+                $rootScope.details = response;
                 /* load_favs();
                 load_api(); */
             }, function(error) {

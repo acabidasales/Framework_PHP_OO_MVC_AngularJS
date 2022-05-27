@@ -1,4 +1,5 @@
 app.controller('controller_shop', function($scope, $rootScope, $route, filters, list, marcas, combustible, services_shop) {
+    console.log("hola");
     /* let nombre_marca = [];
     let nombre_combustible = []; */
     $scope.lists = list;
@@ -46,8 +47,8 @@ app.controller('controller_shop', function($scope, $rootScope, $route, filters, 
         services_shop.change_page(page);
     } */
 
-    $scope.load_details = function(codigo_coche) {
-        location.href = "#/coche/" + codigo_coche;
+    $scope.load_details = function(id) {
+        location.href = "#/coche/" + id;
     };
 
     /* $scope.add_cart = function(codigo_producto) {
@@ -72,9 +73,13 @@ app.controller('controller_shop', function($scope, $rootScope, $route, filters, 
     } */
 
     let path = $route.current.originalPath.split('/');
+    console.log(path);
     if (path[1] === 'shop') {
+        console.log("a");
         $scope.filters = filters;
-        $scope.show_list_product = true;
+        $scope.show_list_cars = true;
+        $scope.filters = true;
+        $scope.list = true;
         $scope.show_details = false;
         if (localStorage.filters) {
             var local = JSON.parse(localStorage.filters);
@@ -84,8 +89,11 @@ app.controller('controller_shop', function($scope, $rootScope, $route, filters, 
             /* $scope.pagination(list); */
         }
     } else if (path[1] === 'coche') {
-        $scope.show_list_coche = false;
+        console.log("a");
+        $scope.show_list_cars = false;
+        $scope.filters = false;
+        $scope.list = false;
         $scope.show_details = true;
-        services_shop.details($route.current.params.token);
+        services_shop.details($route.current.params.id);
     }
 });

@@ -33,9 +33,9 @@
     }
 </style>
 <div class="shop__container" style="background-color:gray;">
-    <div class="shop__list" ng-show="show_list_product">
+    <div class="shop__list" ng-show="show_list_cars">
         <div id="todo" style="display: inline-flex;margin-top: 80px;">
-            <div id="formulario">
+            <div id="formulario" ng-show="filters">
                 <div id="filter" style="width: 10%; margin-left: 20px; margin-right: 20px; margin-top: 25px;">
                     <div id="interior_formulario"><span>Marcas:</span><br>
                         <select id="select_marcas" class="filter_marcas">
@@ -51,13 +51,10 @@
                     </div>
                 </div>
             </div>
-            <!-- <div ng-repeat="list in lists">
-                <span>{{list}}</span>
-            </div> -->
-            <div id="container" class="container" style="display:flex;flex-direction: column-reverse;flex-wrap: wrap-reverse;">
+            <div id="container" class="container" style="display:flex;flex-direction: column-reverse;flex-wrap: wrap-reverse;" ng-show="list">
                 <div id="content" class="content row" style="width:60%;align-items: center;display: flex;flex-wrap: wrap;justify-content: space-between;margin-left:auto;margin-right:40%;">
                     <div id="interior" class="col-md-6" style="margin-bottom: 30px;" ng-repeat="list in lists">
-                        <div id='{{list.ID}}' class="wrapper">
+                        <div id='{{list.ID}}' class="wrapper" ng-click="load_details(list.ID)">
                             <div id="imagen" class="img" style="border-style:solid;border-color:#a7a7a7;border-radius: 10px;margin-top:5px;"><br>
                                 <div class="car"><img style="width:306px;height:204.41px;" src='frontend/{{list.imagen}}'></div>
                                 <div style="text-align:center;font-size:32px;font-weight:bold;">{{list.Marca}} {{list.Modelo}}</div>
@@ -70,8 +67,54 @@
             </div>
         </div>
     </div>
+    <section id="details_2" class="text-center" style="margin-top: -90px;" ng-show="show_details">
+        <div id="general" style="margin-left:30%;margin-right: 30%;"><br><br><br><br><br><br><br>
+            <fieldset id="contenido_pag">
+                <legend style="color:white;width:auto;">{{details[0][0].Marca}} {{details[0][0].Modelo}}</legend>
+                <img src="frontend/{{details[1][0][0].ruta_imagen}}">
+                <div id="datos_car" style="color:white;margin-top:-120px;"><br><br><br><br><br><br><br><br>
+                    <table style="width:30%;margin-left: auto;margin-right: auto;background-color:#7a7a7a;border-style:groove;border-radius: 10px;border-color: #222222;">
+                        <tbody>
+                            <tr style="font-size:26px;margin-top:20px;">
+                                <td style="text-align:left;">Precio: </td>
+                                <td style="text-align:right;color:red;">{{details[0][0].precio}}</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:left;padding-left:4px;">Fabricante: </td>
+                                <td style="text-align:right;padding-right:4px;">{{details[0][0].Marca}}</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:left;padding-left:4px;">Modelo: </td>
+                                <td style="text-align:right;padding-right:4px;">{{details[0][0].Modelo}}</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:left;padding-left:4px;">Motor: </td>
+                                <td style="text-align:right;padding-right:4px;">{{details[0][0].Motor}}</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:left;padding-left:4px;">Tipo de Combustible: </td>
+                                <td style="text-align:right;padding-right:4px;">{{details[0][0].Tipo}}</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:left;padding-left:4px;">Caballos: </td>
+                                <td style="text-align:right;padding-right:4px;">{{details[0][0].Caballos}}</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:left;padding-left:4px;">Numero de Bastidor: </td>
+                                <td style="text-align:right;padding-right:4px;">{{details[0][0].NBast}}</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:left;padding-left:4px;">Matricula: </td>
+                                <td style="text-align:right;padding-right:4px;">{{details[0][0].Matricula}}</td>
+                            </tr>
+                        </tbody>
+                    </table><br><br><br><br><br></div>
+            </fieldset>
+        </div>
+        <div class="list__heart" id="4" style="margin-left:32.5%;"><img id="like_4" class="bx-heart"></div>
+        <h3 class="brand__title" style="background-color:#7a7a7a">Relacionados</h3>
+    </section>
 </div>
-
 <!-- <div class="shop__container">
     <div class="shop__list" ng-show="show_list_product">
         <br><br><br><br>

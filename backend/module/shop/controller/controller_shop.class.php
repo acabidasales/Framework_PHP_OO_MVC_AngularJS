@@ -50,7 +50,7 @@
         }
 
         function select_details() {
-            echo json_encode(common::load_model('shop_model', 'get_select_details', $_GET['ID']));
+            echo json_encode(common::load_model('shop_model', 'get_select_details', $_POST['ID']));
         }
 
         function select_count_filters() {
