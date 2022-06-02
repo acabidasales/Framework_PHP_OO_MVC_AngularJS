@@ -6,7 +6,7 @@
         }
 
         function filters() {
-            echo json_encode(common::load_model('shop_model', 'get_filters', $_POST['filter']));
+            echo json_encode(common::load_model('shop_model', 'get_filters', $_POST['filters']));
         }
 
         function select_one() {

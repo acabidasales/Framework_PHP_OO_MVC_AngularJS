@@ -19,7 +19,7 @@
 			return $this -> dao -> shop_list($this->db);
 		}
 		public function get_filters_BLL($args) {
-			return $this -> dao -> filters($this->db, $args[0]);
+			return $this -> dao -> filters($this->db, $args);
 		}
 
 		public function get_select_one_BLL($args) {

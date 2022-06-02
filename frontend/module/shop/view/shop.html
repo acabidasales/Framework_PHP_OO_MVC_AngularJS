@@ -35,23 +35,24 @@
 <div class="shop__container" style="background-color:gray;">
     <div class="shop__list" ng-show="show_list_cars">
         <div id="todo" style="display: inline-flex;margin-top: 80px;">
-            <div id="formulario" ng-show="filters">
+            <div id="formulario" ng-show="show_filters">
                 <div id="filter" style="width: 10%; margin-left: 20px; margin-right: 20px; margin-top: 25px;">
                     <div id="interior_formulario"><span>Marcas:</span><br>
-                        <select id="select_marcas" class="filter_marcas">
+                        <select id="select_marcas" class="filter_marcas" ng-model="select_marcas">
                             <option value="">-</option>
-                            <option ng-repeat="marcas in marcas" id="{{marcas.nombre_marca}}_id" value="{{marcas.nombre_marca}}">{{marcas.nombre_marca}}</option>
+                            <option ng-repeat="marcas in marcas" id="{{marcas.nombre_marca}}" value="{{marcas.nombre_marca}}">{{marcas.nombre_marca}}</option>
                         </select><br><br>
                         <span>Combustible:</span><br>
-                        <select id="select_combustible" class="filter_combustible">
+                        <select id="select_combustible" class="filter_combustible" ng-model="select_combustible">
                             <option value="">-</option>
                             <option ng-repeat="combustible in combustibles" id="{{combustible.nombre_tipo}}_id" value="{{combustible.nombre_tipo}}">{{combustible.nombre_tipo}}</option>
                         </select><br><br>
-                        <input type="button" class="btn btn-secondary aplicar_filtros_button" id="apply_filters" value="Aplicar Filtros">
+                        <input type="button" class="btn btn-secondary aplicar_filtros_button" id="apply_filters" value="Aplicar Filtros" ng-click="filter_products(select_marcas, select_combustible)">
+                        <input type="button" class="btn btn-danger borrar_filtros" id="borrar_filtros" value="Borrar Filtros" ng-show="show_red_button" ng-click="remove_filters()">
                     </div>
                 </div>
             </div>
-            <div id="container" class="container" style="display:flex;flex-direction: column-reverse;flex-wrap: wrap-reverse;" ng-show="list">
+            <div id="container" class="container" style="display:flex;flex-direction: column-reverse;flex-wrap: wrap-reverse;" ng-show="show_list">
                 <div id="content" class="content row" style="width:60%;align-items: center;display: flex;flex-wrap: wrap;justify-content: space-between;margin-left:auto;margin-right:40%;">
                     <div id="interior" class="col-md-6" style="margin-bottom: 30px;" ng-repeat="list in lists">
                         <div id='{{list.ID}}' class="wrapper" ng-click="load_details(list.ID)">
@@ -111,6 +112,7 @@
                     </table><br><br><br><br><br></div>
             </fieldset>
         </div>
+        <a class='button' href="#/shop">Volver</a>
         <div class="list__heart" id="4" style="margin-left:32.5%;"><img id="like_4" class="bx-heart"></div>
         <h3 class="brand__title" style="background-color:#7a7a7a">Relacionados</h3>
     </section>

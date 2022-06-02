@@ -1,38 +1,48 @@
 app.factory('services_shop', ['services', '$rootScope', function(services, $rootScope) {
     let service = {
         details: details,
-        load_api: load_api
+        /* load_api: load_api, */
+        filter_search: filter_search,
+        remove_localstorage: remove_localstorage
             /* ,
-                    filter_search: filter_search,
-                    pagination: pagination,
-                    change_page: change_page,
-                    add_cart: add_cart,
-                    add_favs: add_favs */
+            pagination: pagination,
+            change_page: change_page,
+            add_cart: add_cart,
+            add_favs: add_favs */
     };
     return service;
 
-    /* function filter_search(filters) {
+    function filter_search(filters) {
         console.log(filters);
-        services.post('shop', 'list_filters_products', { filters: filters })
-            .then(function(response) {
-                pagination(response);
+        services.post('shop', 'filters', { filters: filters })
+            .then(function(cars) {
+                localStorage.setItem('filters', JSON.stringify(filters));
+                console.log(cars);
+                $rootScope.lists = cars;
             }, function(error) {
                 console.log(error);
             });
-    } */
+    }
 
-    /* function pagination(products, favs) {
-        $rootScope.products = products;
+    function remove_localstorage(item) {
+        localStorage.removeItem(item);
+        location.reload();
+    }
+
+    /* function pagination(cars , likes ) {
+
+        console.log(cars);
         $rootScope.page = 1;
         $rootScope.total_page = Math.ceil(products.length / 6);
         $rootScope.pages = [];
         for (i = 1; i <= $rootScope.total_page; i++) {
             $rootScope.pages.push(i);
         }
-        change_page($rootScope.page, favs);
+        change_page($rootScope.page, likes);
     } */
 
     /* function change_page(page, favs) {
+        console.log("change page");
         $rootScope.show1 = true;
         $rootScope.show2 = true;
 
@@ -83,14 +93,14 @@ app.factory('services_shop', ['services', '$rootScope', function(services, $root
             });
     }
 
-    function load_api() {
+    /* function load_api() {
         services.get_api("https://www.googleapis.com/books/v1/volumes?q=subject:sneakers", 'GET', 'JSON')
             .then(function(result) {
                 $rootScope.api_content = result;
             }, function() {
                 console.log("error api");
             });
-    }
+    } */
 
     /* function add_cart(codigo_producto, user) {
         services.post('shop', 'insert_cart', { id: codigo_producto, user: user })

@@ -23,12 +23,12 @@
 
             for ($i = 0; $i < count($filter); $i++) {
                 if ($i == 0) {
-                    $sql.= " WHERE c." . $filter[$i][0] . "=" . "'" . $filter[$i][1] . "'";
+                    $sql.= " WHERE c." . $filter[$i]['key'] . "=" . "'" . $filter[$i]['value'][0] . "'";
                 } else {
-                    $sql.= " AND c." . $filter[$i][0] . "=" . "'" . $filter[$i][1] . "'";
+                    $sql.= " AND c." . $filter[$i]['key'] . "=" . "'" . $filter[$i]['value'][0] . "'";
                 }
             }
-            $sql .= " LIMIT $num_pag, $num_items";
+            /* $sql .= " LIMIT $num_pag, $num_items"; */
             $stmt = $db->ejecutar($sql);
             return $db->listar($stmt);
         }
