@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <functions>
     <function>
-        <name>sexo</name>
-        <uri>sexo</uri>
+        <name>modelo</name>
+        <uri>modelo</uri>
     </function>
     <function>
-        <name>categoria</name>
-        <uri>categoria</uri>
+        <name>marca</name>
+        <uri>marca</uri>
     </function>
     <function>
         <name>autocomplete</name>

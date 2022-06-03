@@ -1,5 +1,4 @@
 <?php
-
     class search_dao{
         static $_instance;
 
@@ -13,44 +12,44 @@
             return self::$_instance;
         }
         
-        function select_sexo($db){
-			$sql = "SELECT DISTINCT sexo FROM producto";
+        function select_marca($db){
+			$sql = "SELECT DISTINCT Marca FROM coches";
 			$stmt = $db->ejecutar($sql);
             return $db->listar($stmt);
         }
 
-        function select_categoria($db){
-            $sql = "SELECT DISTINCT categoria FROM `producto`";
+        function select_modelo($db){
+            $sql = "SELECT DISTINCT Modelo FROM coches";
 			$stmt = $db->ejecutar($sql);
             return $db->listar($stmt);
         }
 
-        function select_sexo_categoria($db, $sexo){
-            $sql = "SELECT DISTINCT categoria FROM `producto` WHERE sexo='$sexo'";
+        function select_marca_modelo($db, $marca){
+            $sql = "SELECT DISTINCT Modelo FROM coches WHERE Marca='$marca'";
 			$stmt = $db->ejecutar($sql);
             return $db->listar($stmt);
         }
 
-        function select_auto_sexo($db, $sexo, $auto){
-            $sql = "SELECT nombre FROM `producto` WHERE sexo='$sexo' AND nombre LIKE '$auto%'";
+        function select_auto_marca($db, $auto, $marca){
+            $sql = "SELECT city FROM coches WHERE Marca='$marca' AND city LIKE '$auto%'";
 			$stmt = $db->ejecutar($sql);
             return $db->listar($stmt);
         }
 
-        function select_auto_sexo_categoria($db, $sexo, $categoria, $auto){
-            $sql = "SELECT nombre FROM `producto` WHERE sexo='$sexo' AND categoria='$categoria' AND nombre LIKE '$auto%'";
+        function select_auto_marca_modelo($db, $auto, $marca, $modelo){
+            $sql = "SELECT city FROM coches WHERE Marca='$marca' AND Modelo='$modelo' AND city LIKE '$auto%'";
 			$stmt = $db->ejecutar($sql);
             return $db->listar($stmt);
         }
 
-        function select_auto_categoria($db, $categoria, $auto){
-            $sql = "SELECT nombre FROM `producto` WHERE categoria='$categoria' AND nombre LIKE '$auto%'";
+        function select_auto_modelo($db, $auto, $modelo){
+            $sql = "SELECT city FROM coches WHERE Modelo='$modelo' AND city LIKE '$auto%'";
 			$stmt = $db->ejecutar($sql);
             return $db->listar($stmt);
         }
 
         function select_auto($db, $auto){
-            $sql = "SELECT nombre FROM `producto` WHERE nombre LIKE '$auto%'";
+            $sql = "SELECT city FROM coches WHERE city LIKE '$auto%'";
 			$stmt = $db->ejecutar($sql);
             return $db->listar($stmt);
         }

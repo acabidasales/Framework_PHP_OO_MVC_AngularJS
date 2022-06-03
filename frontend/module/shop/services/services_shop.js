@@ -13,11 +13,9 @@ app.factory('services_shop', ['services', '$rootScope', function(services, $root
     return service;
 
     function filter_search(filters) {
-        console.log(filters);
         services.post('shop', 'filters', { filters: filters })
             .then(function(cars) {
                 localStorage.setItem('filters', JSON.stringify(filters));
-                console.log(cars);
                 $rootScope.lists = cars;
             }, function(error) {
                 console.log(error);

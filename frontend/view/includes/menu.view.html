@@ -38,19 +38,23 @@
                 </li>
             </ul>
             <br><br>
-            <!-- <div class="search__container" style="padding-top:30px;margin-left:-5%;position: absolute;">
+            <div class="search__container" style="margin-top:-2%;margin-left:10%;position: absolute;">
                 <form class="search__form">
-                    <select id="marca" style="border-radius: 5px;">
-                            <option value="0">Marca</option>
+                    <select id="marca" style="border-radius: 5px;" ng-model="selected_marca" ng-change="click_modelo(selected_marca)">
+                            <option value="">Marca</option>
+                            <option ng-repeat="marca_search in marcas_search" value="{{marca_search.Marca}}">{{marca_search.Marca}}</option>
                         </select>
-                    <select id="modelo" style="border-radius: 5px;">
-                            <option value="0">Modelo</option>
+                    <select id="modelo" style="border-radius: 5px;" ng-model="selected_modelo">
+                            <option value="">Modelo</option>
+                            <option ng-repeat="modelo_search in modelos_search" value="{{modelo_search.Modelo}}">{{modelo_search.Modelo}}</option>
                         </select>
-                    <input type="text" id="autocom" autocomplete="off" style="border-radius: 5px;" />
-                    <input type="button" class="btn btn-success " value="Search" id="search-btn" />
-                    <div id="search_auto" style="background-color:gray;color:white;"></div>
+                    <input type="text" id="autocom" autocomplete="off" style="border-radius: 5px;" ng-model="autocomplete" ng-change="click_autocomplete(selected_marca, selected_modelo, autocomplete)" />
+                    <input type="button" class="btn btn-success " value="Search" id="search-btn" ng-click="click_search(selected_marca, selected_modelo, autocomplete)" />
+                    <div id="search_complete" style="background-color:gray;color:white;">
+                        <div id="search_auto" ng-click="click_search(selected_marca, selected_modelo, com.nombre)" ng-repeat="com in complete">{{com.city}}</div>
+                    </div>
                 </form>
-            </div> -->
+            </div>
         </div>
     </div>
 </div>

@@ -1,4 +1,6 @@
 <main class="l-main" style="background-color: grey;">
+    <br>
+    <br>
     <!--========== CAROUSEL ==========-->
     <!-- <div class="carousel">
         <div class="carousel__container">
@@ -27,7 +29,7 @@
                         <li id="{{marca.nombre_marca}}" class="portfolio-item" ng-repeat="marca in marcas">
                             <div class="item-main" style="background-color: grey;">
                                 <div class="portfolio-image"><img id="{{marca.nombre_marca}}" src="frontend/{{marca.imagen_marca}}" alt="">
-                                    <div class="overlay"><a class="preview btn btn-primary categoria" title="Image Title Here" href="">Ver {{marca.nombre_marca}}</a></div>
+                                    <div class="overlay"><a class="preview btn btn-primary categoria" title="Image Title Here" href="" ng-click="redirect_shop('marca', marca.nombre_marca)">Ver {{marca.nombre_marca}}</a></div>
                                 </div>
                                 <h5>{{marca.nombre_marca}}</h5>
                             </div>
@@ -48,7 +50,7 @@
                         <li id="{{tipo.nombre_tipo}}" class="portfolio-item" ng-repeat="tipo in tipos">
                             <div class="item-main" style="background-color: grey;">
                                 <div class="portfolio-image"><img id="{{tipo.nombre_tipo}}" src="frontend/{{tipo.imagen_tipo}}" alt="">
-                                    <div class="overlay"><a class="preview btn btn-primary categoria" title="Image Title Here" href="">Ver {{tipo.nombre_tipo}}</a></div>
+                                    <div class="overlay"><a class="preview btn btn-primary categoria" title="Image Title Here" href="" ng-click="redirect_shop('tipo', tipo.nombre_tipo)">Ver {{tipo.nombre_tipo}}</a></div>
                                 </div>
                                 <h5>{{tipo.nombre_tipo}}</h5>
                             </div>

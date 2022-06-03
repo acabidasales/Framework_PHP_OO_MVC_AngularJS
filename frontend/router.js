@@ -96,18 +96,18 @@ app.run(function($rootScope, services, services_search) {
         $rootScope.menu = false;
     }
 
-    services_search.search_sexo();
-    services_search.search_categoria();
+    services_search.search_marca();
+    services_search.search_modelo();
 
-    $rootScope.click_categoria = function(sexo) {
-        services_search.search_categoria(sexo);
+    $rootScope.click_modelo = function(marca) {
+        services_search.search_modelo(marca);
     }
 
-    $rootScope.click_autocomplete = function(sexo = undefined, categoria = undefined, autocomplete) {
-        services_search.search_autocomplete(sexo, categoria, autocomplete);
+    $rootScope.click_autocomplete = function(marca = undefined, modelo = undefined, autocomplete) {
+        services_search.search_autocomplete(marca, modelo, autocomplete);
     }
 
-    $rootScope.click_search = function(sexo = undefined, categoria = undefined, autocomplete = undefined) {
-        services_search.search(sexo, categoria, autocomplete);
+    $rootScope.click_search = function(marca = undefined, modelo = undefined, autocomplete = undefined) {
+        services_search.search(marca, modelo, autocomplete);
     }
 });

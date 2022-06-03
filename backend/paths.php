@@ -71,5 +71,13 @@
     define('JS_VIEW_LOGIN', SITE_PATH . 'module/login/view/js/');
     define ('VIEW_PATH_LOGIN', SITE_ROOT . 'module/login/view/');
 
+    //MODEL_SEARCH
+    define('UTILS_SEARCH', SITE_ROOT . 'module/search/utils/');
+    define('DAO_SEARCH', SITE_ROOT . 'module/search/model/DAO/');
+    define('BLL_SEARCH', SITE_ROOT . 'module/search/model/BLL/');
+    define('MODEL_SEARCH', SITE_ROOT . 'module/search/model/model/');
+    define('JS_VIEW_SEARCH', SITE_PATH . 'module/search/view/js/');
+    define ('VIEW_PATH_SEARCH', SITE_ROOT . 'module/search/view/');
+
     // Friendly
     define('URL_FRIENDLY', TRUE);
