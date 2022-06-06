@@ -31,7 +31,7 @@
         }
 
         function verify_email() {
-            $verify = json_encode(common::load_model('login_model', 'get_verify_email', $_GET['token']));
+            $verify = json_encode(common::load_model('login_model', 'get_verify_email', $_POST['token']));
             if (!empty($verify)) {
                 common::load_view('top_page_login.php', VIEW_PATH_LOGIN . 'login.html');
                 return;
