@@ -21,8 +21,7 @@
 			$hashavatar = md5(strtolower(trim($args[1]))); 
 			$avatar = "https://robohash.org/$hashavatar";
 			$token = common::generate_Token_secure(20);
-			$uid = md5($args[1]);
-			$this -> dao -> insert_user($this->db, $args[0], $args[1], $hashed_pass, $avatar, $token, $uid);
+			$this -> dao -> insert_user($this->db, $args[0], $args[1], $hashed_pass, $avatar, $token);
 			return $token;
 		}
 
@@ -35,9 +34,9 @@
 		public function get_login_BLL($args) {
 			$user = $this -> dao -> select_user($this->db, $args[0]);
 			if (!empty($user)) {
-				if (password_verify($args[1], $user['password'])) {
-					$jwt = jwt_process::encode($user['username']);
-					$this -> dao -> update_token_jwt($this->db, $jwt, $user['email']);
+				if (password_verify($args[1], $user[0]['password'])) {
+					$jwt = jwt_process::encode($user[0]['username']);
+					$this -> dao -> update_token_jwt($this->db, $jwt, $user[0]['email']);
 					return json_encode($jwt);
 				}
 			}

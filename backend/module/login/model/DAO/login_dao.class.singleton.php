@@ -12,9 +12,9 @@
             return self::$_instance;
         }
 
-        public function insert_user($db, $username, $email, $password, $avatar, $token, $uid){
+        public function insert_user($db, $username, $email, $password, $avatar, $token){
             $sql ="INSERT INTO `users` (`username`, `password`, `email`, `type`, `avatar`, `uID`, `active`, `token_email`)     
-                VALUES ('$username','$password','$email','client', '$avatar',$uid, 0, '$token')";
+                VALUES ('$username','$password','$email','client', '$avatar','', 0, '$token')";
             return $stmt = $db->ejecutar($sql);
         }
         
