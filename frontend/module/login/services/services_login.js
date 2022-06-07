@@ -30,9 +30,15 @@ app.factory('services_login', ['services', 'services_localstorage', '$rootScope'
     function register(username, email, password) {
         services.post('login', 'register', { username: username, email: email, password: password })
             .then(function(response) {
-                $rootScope.token = response;
-                location.href = "#/login";
-                return;
+                console.log(response);
+                if (response != '"false"') {
+                    $rootScope.token = response;
+                    toastr.success("Email sended for verify.");
+                    location.href = "#/login";
+                    return;
+                } else {
+                    toastr.error("This account already exists.");
+                }
             }, function(error) {
                 console.log(error);
             });

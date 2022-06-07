@@ -21,8 +21,7 @@
 			$hashavatar = md5(strtolower(trim($args[1]))); 
 			$avatar = "https://robohash.org/$hashavatar";
 			$token = common::generate_Token_secure(20);
-			$this -> dao -> insert_user($this->db, $args[0], $args[1], $hashed_pass, $avatar, $token);
-			return $token;
+			return $this -> dao -> insert_user($this->db, $args[0], $args[1], $hashed_pass, $avatar, $token);;
 		}
 
 		public function get_social_register_BLL($args) {

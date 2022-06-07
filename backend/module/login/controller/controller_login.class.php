@@ -22,10 +22,11 @@
 				if (!empty($email)) {
 					//echo json_encode($email); 
                     //echo json_encode($resultado);
+                    echo json_encode($resultado);
 					return;  
-				}   
+				}
             }else{
-                echo json_encode('fail');
+                echo json_encode("fail");
                 return;
             }
         }
