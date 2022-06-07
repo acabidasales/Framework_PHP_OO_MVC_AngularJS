@@ -63,18 +63,18 @@ app.controller('controller_shop', function($scope, $rootScope, $route, filters, 
         }
     } */
 
-    /* $scope.add_like = function() {
+    $scope.add_like = function() {
         if (localStorage.token) {
-            services_shop.add_like(this.product.codigo_producto, localStorage.token);
-            if (this.product.like_class == "bxs-heart") {
-                this.product.like_class = "bx-heart";
+            services_shop.add_likes(this.list.ID, localStorage.token);
+            if (this.list.like_class == "bxs-heart") {
+                this.list.like_class = "bx-heart";
             } else {
-                this.product.like_class = "bxs-heart";
+                this.list.like_class = "bxs-heart";
             }
         } else {
             location.href = "#/login";
         }
-    } */
+    }
 
     let path = $route.current.originalPath.split('/');
     if (path[1] === 'shop') {
@@ -91,9 +91,11 @@ app.controller('controller_shop', function($scope, $rootScope, $route, filters, 
             services_shop.filter_search(local);
             $scope.show_red_button = true;
         } else {
-            $scope.lists = list;
+
             $scope.marcas = marcas;
             $scope.combustibles = combustible;
+            $rootScope.lists = list;
+            services_shop.load_likes();
         }
     } else if (path[1] === 'coche') {
         $scope.show_list_cars = false;

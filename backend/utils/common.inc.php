@@ -1,6 +1,6 @@
 <?php
     class common {
-        public static function load_error() {
+        /* public static function load_error() {
             require_once (VIEW_PATH_INC . 'menu.view.html');
             require_once (VIEW_PATH_INC . 'header.php');
             require_once (VIEW_PATH_INC . 'error404.html');
@@ -17,7 +17,7 @@
             }else {
                 self::load_error();
             }
-        }
+        } */
 
         public static function load_model($model, $function = null, $args = null) {
             $dir = explode('_', $model);

@@ -85,8 +85,8 @@
         <uri>load_like</uri>
     </function>
     <function>
-        <name>get_click_like</name>
-        <uri>get_click_like</uri>
+        <name>click_like</name>
+        <uri>click_like</uri>
     </function>
     <function>
         <name>print_filter_data</name>

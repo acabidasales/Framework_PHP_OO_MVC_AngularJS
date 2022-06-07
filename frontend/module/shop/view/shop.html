@@ -62,7 +62,7 @@
                                 <div style="text-align:right;font-size:18px;font-weight:bold;color:red;">{{list.precio}}€</div>
                             </div>
                         </div>
-                        <div class="list__heart" id='{{list.ID}}'><img id='like_{{list.ID}}' class="bx-heart"></div>
+                        <div class="list__heart" id='{{list.ID}}'><img id='{{list.ID}}' class="{{list.like_class}}" ng-click="add_like()"></div>
                     </div>
                 </div>
             </div>
@@ -113,7 +113,7 @@
             </fieldset>
         </div>
         <a class='button' class="btn btn-secondary aplicar_filtros_button" href="#/shop">Volver</a>
-        <div class="list__heart" id="4" style="margin-left:32.5%;"><img id="like_4" class="bx-heart"></div>
+        <div class="list__heart" id="{{details[0][0].ID}}" style="margin-left:32.5%;"><img id="like_{{details[0][0].ID}}" class="bx-heart"></div>
         <h3 class="brand__title" style="background-color:#7a7a7a">Relacionados</h3>
     </section>
 </div>

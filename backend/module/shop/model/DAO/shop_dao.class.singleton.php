@@ -28,7 +28,6 @@
                     $sql.= " AND c." . $filter[$i]['key'] . "=" . "'" . $filter[$i]['value'][0] . "'";
                 }
             }
-            /* $sql .= " LIMIT $num_pag, $num_items"; */
             $stmt = $db->ejecutar($sql);
             return $db->listar($stmt);
         }

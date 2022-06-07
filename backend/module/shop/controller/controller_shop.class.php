@@ -2,7 +2,7 @@
     class controller_shop {
 
         function list() {
-            echo json_encode(common::load_model('shop_model', 'get_list'/* , [$_POST['num_pag'], $_POST['num_item']] */));
+            echo json_encode(common::load_model('shop_model', 'get_list'));
         }
 
         function filters() {
@@ -66,23 +66,23 @@
         }
 
         function select_likes() {
-            echo json_encode(common::load_model('shop_model', 'get_select_likes', [$_GET['id'], $json['name']]));
+            echo json_encode(common::load_model('shop_model', 'get_select_likes', [$_POST['id'], $json['name']]));
         }
 
         function insert_likes() {
-            echo json_encode(common::load_model('shop_model', 'get_insert_likes', [$_GET['id'], $json['name']]));
+            echo json_encode(common::load_model('shop_model', 'get_insert_likes', [$_POST['id'], $json['name']]));
         }
 
         function delete_likes() {
-            echo json_encode(common::load_model('shop_model', 'get_delete_likes', [$_GET['id'], $json['name']]));
+            echo json_encode(common::load_model('shop_model', 'get_delete_likes', [$_POST['id'], $json['name']]));
         }
 
         function load_like() {
-            echo json_encode(common::load_model('shop_model', 'get_load_like', $_GET['username']));
+            echo json_encode(common::load_model('shop_model', 'get_load_like', $_POST['username']));
         }
 
         function click_like() {
-            echo json_encode(common::load_model('shop_model', 'get_click_like', $_GET['ID']));
+            echo json_encode(common::load_model('shop_model', 'get_click_like', [$_POST['id'], $_POST['user']]));
         }
 
         function print_filter_data() {
@@ -90,7 +90,7 @@
         }
 
         function control_likes() {
-            echo json_encode(common::load_model('shop_model', 'get_control_likes', [$_GET['id'], $_GET['username']]));
+            echo json_encode(common::load_model('shop_model', 'get_control_likes', [$_POST['id'], $_POST['username']]));
         }
     }
 ?>

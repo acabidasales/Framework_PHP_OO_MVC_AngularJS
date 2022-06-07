@@ -1,14 +1,10 @@
 app.factory('services_shop', ['services', '$rootScope', function(services, $rootScope) {
     let service = {
         details: details,
-        /* load_api: load_api, */
         filter_search: filter_search,
-        remove_localstorage: remove_localstorage
-            /* ,
-            pagination: pagination,
-            change_page: change_page,
-            add_cart: add_cart,
-            add_favs: add_favs */
+        remove_localstorage: remove_localstorage,
+        load_likes: load_likes,
+        add_likes: add_likes
     };
     return service;
 
@@ -17,6 +13,7 @@ app.factory('services_shop', ['services', '$rootScope', function(services, $root
             .then(function(cars) {
                 localStorage.setItem('filters', JSON.stringify(filters));
                 $rootScope.lists = cars;
+                load_likes();
             }, function(error) {
                 console.log(error);
             });
@@ -55,37 +52,36 @@ app.factory('services_shop', ['services', '$rootScope', function(services, $root
         load_favs();
     } */
 
-    /* function load_favs() {
+    function load_likes() {
         if (localStorage.token) {
-            services.post('shop', 'load_like', { user: localStorage.token })
+            services.post('shop', 'load_like', { username: localStorage.token })
                 .then(function(response) {
-                    for (row in $rootScope.list_products) {
-                        $rootScope.list_products[row].favs_class = "bx-heart";
-                        var product = $rootScope.list_products[row];
+                    for (row in $rootScope.lists) {
+                        $rootScope.lists[row].like_class = "bx-heart";
+                        var car = $rootScope.lists[row];
                         for (row in response) {
-                            if (response[row].codigo_producto == product.codigo_producto) {
-                                product.favs_class = "bxs-heart";
+                            if (response[row].ID_car == car.ID) {
+                                car.like_class = "bxs-heart";
                             };
                         }
-                        $rootScope.list_products[row].favs_class = product.favs_class;
+                        /* $rootScope.lists[row].like_class = car.like_class; */
                     }
                 }, function(error) {
                     console.log(error);
                 });
         } else {
-            for (row in $rootScope.list_products) {
-                $rootScope.list_products[row].favs_class = "bx-heart";
+            for (row in $rootScope.lists) {
+                $rootScope.lists[row].like_class = "no-heart";
             }
         }
-    } */
+    }
 
     function details(codigo_coche) {
         services.post('shop', 'select_details', { ID: codigo_coche })
             .then(function(response) {
                 console.log(response);
                 $rootScope.details = response;
-                /* load_favs();
-                load_api(); */
+                load_likes();
             }, function(error) {
                 console.log(error);
             });
@@ -109,13 +105,13 @@ app.factory('services_shop', ['services', '$rootScope', function(services, $root
             });
     } */
 
-    /* function add_favs(codigo_producto, user) {
-        services.post('shop', 'click_like', { id: codigo_producto, user: user })
+    function add_likes(id_coche, user) {
+        services.post('shop', 'click_like', { id: id_coche, user: user })
             .then(function(response) {
                 console.log(response);
             }, function(error) {
                 console.log(error);
             });
-    } */
+    }
 
 }]);

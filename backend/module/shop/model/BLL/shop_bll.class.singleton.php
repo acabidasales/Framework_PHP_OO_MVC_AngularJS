@@ -96,19 +96,20 @@
 		}
 		
 		public function get_load_like_BLL($args) {
-			$token = str_replace( array( '\'', '"', ',' , ';', '<', '>', ), '',$args);
+			$token = str_replace( array( '\'', '\\', '"', '"', ',' , ';', '<', '>', ), '',$args);
 			$jwt = jwt_process::decode($token);
 			$jwt = json_decode($jwt, TRUE);
 			return $this -> dao -> select_load_likes($this->db, $jwt['name']);
 		}
 
 		public function get_click_like_BLL($args) {
-			$jwt = jwt_process::decode($args[1]);
+			$token = str_replace( array( '\'', '\\', '"', '"', ',' , ';', '<', '>', ), '',$args[1]);
+			$jwt = jwt_process::decode($token);
 			$jwt = json_decode($jwt, TRUE);
-			if ($this -> dao -> select_likes($this->db, $args[0], $jwt['name'])) {
-				return $this -> dao -> delete_likes($this->db, $args[0], $jwt['name']);
+			if ($this -> dao -> select_likes($this->db, $args[0],$jwt['name'])) {
+				return $this -> dao -> delete_likes($this->db, $args[0],$jwt['name']);
 			}
-			return $this -> dao -> insert_likes($this->db, $args[0], $jwt['name']);
+			return $this -> dao -> insert_likes($this->db, $args[0],$jwt['name']);
 		}
 
 		public function get_print_filter_data_BLL() {
