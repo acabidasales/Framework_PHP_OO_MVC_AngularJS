@@ -16,6 +16,31 @@
 			return self::$_instance;
 		}
 
+		public function manage_modelo_BLL($args) {
+			if($args == 1){
+                $res = common::load_model('search_model', 'get_select_modelo');
+            }else{
+                $res = common::load_model('search_model', 'get_select_marca_modelo', $args);
+            }
+			return $res;
+		}
+
+		public function manage_autocomplete_BLL($args) {
+			$marca = $args[0];
+			$modelo = $args[1];
+			$complete = $args[2];
+			if ($marca != 1 && $modelo == 1){
+                $res = common::load_model('search_model', 'get_auto_marca', [$marca, $complete]);
+            }else if($marca != 1 && $modelo != 1){
+                $res = common::load_model('search_model', 'get_select_auto_marca_modelo', [$complete, $marca, $modelo]);
+            }else if($marca == 1 && $modelo != 1){
+                $res = common::load_model('search_model', 'get_select_auto_modelo', [$modelo, $complete]);
+            }else {
+                $res = common::load_model('search_model', 'get_select_auto', $complete);
+            }
+			return $res;
+		}
+
 		public function get_select_marca_BLL() {
 			return $this -> dao -> select_marca($this->db);
 		}

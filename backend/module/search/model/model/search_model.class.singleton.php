@@ -42,4 +42,12 @@
             return $this -> bll -> get_select_auto_BLL($args);
         }
 
+        public function manage_modelo($args) {
+            return $this -> bll -> manage_modelo_BLL($args);
+        }
+
+        public function manage_autocomplete($args) {
+            return $this -> bll -> manage_autocomplete_BLL($args);
+        }
+
     }

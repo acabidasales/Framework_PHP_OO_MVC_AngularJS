@@ -16,7 +16,7 @@ app.factory('services_search', ['services', '$rootScope', function(services, $ro
             });
     }
 
-    function search_modelo(marca = undefined) {
+    function search_modelo(marca = 1) {
         services.post('search', 'modelo', { marca: marca })
             .then(function(response) {
                 $rootScope.modelos_search = response;
@@ -25,7 +25,7 @@ app.factory('services_search', ['services', '$rootScope', function(services, $ro
             });
     }
 
-    function search_autocomplete(marca = undefined, modelo = undefined, autocomplete) {
+    function search_autocomplete(marca = 1, modelo = 1, autocomplete) {
         if (autocomplete != "") {
             services.post('search', 'autocomplete', { marca: marca, modelo: modelo, complete: autocomplete })
                 .then(function(response) {
