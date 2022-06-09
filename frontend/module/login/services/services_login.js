@@ -5,9 +5,7 @@ app.factory('services_login', ['services', 'services_localstorage', '$rootScope'
     function login(username, password) {
         services.post('login', 'login', { username: username, password: password })
             .then(function(response) {
-                console.log(response);
                 if (response != '"fail"') {
-                    console.log("in");
                     toastr.success("Log In");
                     services_localstorage.setSession(response);
                 } else {
@@ -58,6 +56,7 @@ app.factory('services_login', ['services', 'services_localstorage', '$rootScope'
     function recover_password(email) {
         services.post('login', 'send_recover_email', { email: email })
             .then(function(response) {
+                console.log(response);
                 $rootScope.token = response;
                 location.href = "#/login ";
                 return;

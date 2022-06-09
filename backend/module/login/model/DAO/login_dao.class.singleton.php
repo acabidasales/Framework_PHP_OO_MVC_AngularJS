@@ -55,7 +55,7 @@
         }
 
         public function select_recover_password($db, $email){
-			$sql = "SELECT `email` FROM `users` WHERE email='$email'";
+			$sql = "SELECT `email` FROM `users` WHERE email='$email' AND password <> ''";
             $stmt = $db->ejecutar($sql);
             return $db->listar($stmt);
         }
