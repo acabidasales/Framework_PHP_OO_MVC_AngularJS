@@ -16,12 +16,53 @@
 			return self::$_instance;
 		}
 
+		public function manage_register_BLL($args) {
+			$username = $args[0];
+			$postemail = $args[1];
+			$psswd = $args[2];
+			$resultado = common::load_model('login_model', 'get_register', [$username, $postemail,  $psswd]);
+            if($resultado != "false"){
+                $message = [ 'type' => 'validate', 
+                                'token' => $resultado, 
+                                'toEmail' => $postemail];
+                $email = json_decode(mail::send_email($message), true);
+				if (!empty($email)) {
+					/* str_replace( array( '\'', '"', ',' , ';', '<', '>', ), '',$resultado); */
+					return json_encode($resultado);
+				}
+            }else{
+				/* str_replace( array( '\'', '"', ',' , ';', '<', '>', ), '',$resultado); */
+                return json_encode($resultado);
+            }
+		}
+
+		public function manage_recover_email_BLL($args) {
+			$postemail = $args;
+			$resultado = common::load_model('login_model', 'get_recover_email', $postemail);
+            if($resultado != "fail"){
+                $message = ['type' => 'recover', 
+                            'token' => $resultado, 
+                            'toEmail' => $postemail];
+                $email = json_decode(mail::send_email($message), true);
+				if (!empty($email)) {
+					return json_encode($resultado);
+				}
+            }else{
+                return json_encode("fail");
+            }
+		}
+
 		public function get_register_BLL($args) {
 			$hashed_pass = password_hash($args[2], PASSWORD_DEFAULT);
 			$hashavatar = md5(strtolower(trim($args[1]))); 
 			$avatar = "https://robohash.org/$hashavatar";
 			$token = common::generate_Token_secure(20);
-			return $this -> dao -> insert_user($this->db, $args[0], $args[1], $hashed_pass, $avatar, $token);;
+			$result = $this -> dao -> insert_user($this->db, $args[0], $args[1], $hashed_pass, $avatar, $token);
+			if ($result == "true") {
+				return $token;
+			}else {
+				return "false";
+			}
 		}
 
 		public function get_social_register_BLL($args) {

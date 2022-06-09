@@ -13,20 +13,7 @@
         } 
     
         function register() {
-            $resultado = json_encode(common::load_model('login_model', 'get_register', [$_POST['username'], $_POST['email'],  $_POST['password']]));
-            if($resultado != '"false"'){
-                $message = [ 'type' => 'validate', 
-                                'token' => $resultado, 
-                                'toEmail' => $_POST['email']];
-                $email = json_decode(mail::send_email($message), true);
-				if (!empty($email)) {
-                    echo json_encode($resultado);
-					return;  
-				}
-            }else{
-                echo json_encode($resultado);
-                return;
-            }
+            echo json_encode(common::load_model('login_model', 'manage_register', [$_POST['username'], $_POST['email'],  $_POST['password']]));
         }
 
         function verify_email() {
@@ -34,22 +21,7 @@
         }
 
         function send_recover_email() {
-            $resultado = json_encode(common::load_model('login_model', 'get_recover_email', $_POST['email']));
-            if($resultado != '"false"'){
-                $message = ['type' => 'recover', 
-                            'token' => $resultado, 
-                            'toEmail' => $_POST['email']];
-                $email = json_decode(mail::send_email($message), true);
-				if (!empty($email)) {
-					//echo json_encode($email); 
-                    //echo json_encode($result);
-                    echo json_encode(str_replace( array( '\'', '"', ',' , ';', '<', '>', ), '',$resultado));
-					return;  
-				}
-            }else{
-                echo json_encode("fail");
-                return;
-            }
+            echo json_encode(common::load_model('login_model', 'manage_recover_email', $_POST['email']));
         }
 
         function verify_token() {

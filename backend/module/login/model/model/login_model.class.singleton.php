@@ -14,6 +14,14 @@
             return self::$_instance;
         }
 
+        public function manage_register($args) {
+            return $this -> bll -> manage_register_BLL($args);
+        }
+
+        public function manage_recover_email($args) {
+            return $this -> bll -> manage_recover_email_BLL($args);
+        }
+
         public function get_register($args) {
             return $this -> bll -> get_register_BLL($args);
         }

@@ -28,6 +28,7 @@ app.factory('services_login', ['services', 'services_localstorage', '$rootScope'
     function register(username, email, password) {
         services.post('login', 'register', { username: username, email: email, password: password })
             .then(function(response) {
+                response = response.replace(/\\"/g, '');
                 console.log(response);
                 if (response != '"false"') {
                     $rootScope.token = response;
@@ -56,6 +57,7 @@ app.factory('services_login', ['services', 'services_localstorage', '$rootScope'
     function recover_password(email) {
         services.post('login', 'send_recover_email', { email: email })
             .then(function(response) {
+                response = response.replace(/\\"/g, '');
                 console.log(response);
                 $rootScope.token = response;
                 location.href = "#/login ";
@@ -68,6 +70,7 @@ app.factory('services_login', ['services', 'services_localstorage', '$rootScope'
     function new_password(token, password) {
         services.post('login', 'new_password', { token: token, password: password })
             .then(function(response) {
+                console.log(response);
                 $rootScope.token = response;
                 location.href = "#/login ";
                 return;

@@ -67,7 +67,7 @@
         }
 
         public function update_new_passwoord($db, $token, $password){
-            $sql = "UPDATE `users` SET `password`= '$password', `token_email`= '' WHERE `token_email` = $token";
+            $sql = "UPDATE `users` SET `password`= '$password', `token_email`= '' WHERE `token_email` = '$token'";
             $stmt = $db->ejecutar($sql);
             return "ok";
         }
