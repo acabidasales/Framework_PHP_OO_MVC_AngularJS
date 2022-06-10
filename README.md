@@ -15,7 +15,7 @@ Un proyecto realizado por Antoni Cabida de 1er curso de DAW en IES L'Estacio<br>
  
 <h2>MODULOS</h2>
  
-<p>La web contiene un total de 4 secciones. Además de una opción de traducción a nivel de toda la web.<p>
+<p>La web contiene un total de 5 modulos.<p>
   
 <h3>Home</h3>
 <p>En el home se encuentran una selección de Marcas y Tipos de combustibles, haciendo click en los cuales, puedes buscarlos directamente en el shop</p>
